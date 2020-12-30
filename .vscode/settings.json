@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "SMuon_AllRuns_reader.C": "cpp",
+        "new_SM_reader.C": "cpp",
+        "SElectron_AllRuns_reader.C": "cpp",
+        "JetHT_reader.C": "cpp",
+        "all_1d_pt.C": "cpp",
+        "Style_Modern.C": "cpp",
+        "all_hist_reader.C": "cpp"
+    }
+}
