@@ -5,7 +5,7 @@ process = cms.Process("Demo")
 process.load("FWCore.MessageService.MessageLogger_cfi")
 process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )  
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100) )  
 #process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(23374) )  
 
 from PhysicsTools.PatAlgos.tools.helpers import getPatAlgosToolsTask
@@ -14,6 +14,7 @@ patAlgosToolsTask = getPatAlgosToolsTask(process)
 
 process.source = cms.Source("PoolSource",
                                 fileNames = cms.untracked.vstring(
+'/store/mc/RunIISummer19UL17MiniAOD/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/MINIAODSIM/106X_mc2017_realistic_v6-v2/100000/002C691B-A0CE-A24F-8805-03B4C52C9004.root'
 #'/store/data/Run2017B/SingleMuon/MINIAOD/09Aug2019_UL2017-v1/130000/FB3AF382-9B0B-0149-992B-FE2821BDD760.root',
 #'/store/data/Run2017B/SingleMuon/MINIAOD/09Aug2019_UL2017-v1/130000/072C9A2E-CB16-454A-B606-23CC06A9D99E.root',
 #'/store/data/Run2017B/SingleMuon/MINIAOD/09Aug2019_UL2017-v1/130000/8275D908-9210-E740-82D6-B8A900C3F159.root',
@@ -39,7 +40,7 @@ process.source = cms.Source("PoolSource",
 #process.TFileService = cms.Service("TFileService", fileName = cms.string("outputQCDHT1000to1500_puppiv16_23374evts.root") )
 #process.TFileService = cms.Service("TFileService", fileName = cms.string("UL2017RunBSingleMuon_task2.root") )
 
-process.TFileService = cms.Service("TFileService", fileName = cms.string('UL2017RunBJetHT_morethan50_ex.root') ) 
+process.TFileService = cms.Service("TFileService", fileName = cms.string('DYJetsUL17MC_test.root') ) 
 
 #process.output = cms.OutputModule("PoolOutputModule",
 #    fileName = cms.untracked.string('UL2017RunBSingleMuon_task3.root')
@@ -61,7 +62,7 @@ process.load("Geometry.CMSCommonData.cmsIdealGeometryXML_cfi")
 process.load('Configuration.StandardSequences.Reconstruction_cff')
 
 
-ISMC=False
+ISMC=True
 
 runEra="DataUL2017B"
 #runEra="MCUL2017"
@@ -186,15 +187,15 @@ process.jmeanalyzer = cms.EDAnalyzer('JMEAnalyzer',
                                      PhotonPtCut=cms.double(20),
                                      PhotonTightWorkingPoint=cms.string(PhotonTightWP),
                                      PFCandPtCut=cms.double(1000),
-                                     SaveTree=cms.bool(True),
+                                     SaveTree=cms.bool(False),
                                      IsMC=cms.bool(ISMC),
-                                     SavePUIDVariables=cms.bool(True),
-                                     SaveAK8Jets=cms.bool(True),
+                                     SavePUIDVariables=cms.bool(False),
+                                     SaveAK8Jets=cms.bool(False),
                                      DropUnmatchedJets=cms.bool(False),
                                      DropBadJets=cms.bool(False),
                                      ApplyPhotonID=cms.bool(False),
 #                                     Skim=cms.string("ZToEEorMuMu"),
-                                     Skim=cms.string(""),
+                                     Skim=cms.string("Dilepton"),
 #                                     Skim=cms.string("HighHT"),
                                      Debug=cms.bool(False)
                               )
