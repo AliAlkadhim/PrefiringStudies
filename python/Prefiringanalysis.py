@@ -142,7 +142,7 @@ if "MCUL2017" in runEra:
 print "Roch corr file: " 
 print RochesterCorrectionFile
 
-process.jmeanalyzer = cms.EDAnalyzer('JMEAnalyzer',
+process.prefiringanalyzer = cms.EDAnalyzer('prefiringanalyzer',
                                      METFiltersPAT = cms.InputTag("TriggerResults::PAT"),
                                      METFiltersRECO = cms.InputTag("TriggerResults::RECO"),
                                      ECALBadCalibFilterUpdate=cms.InputTag("ecalBadCalibReducedMINIAOD2019Filter"),
@@ -579,7 +579,7 @@ if ISMC:
 #process.computeqgl = cms.Path(process.QGTagger)
 
 #This one obviously shouldn't be commented out
-process.endpath = cms.EndPath( process.jmeanalyzer)
+process.endpath = cms.EndPath( process.prefiringanalyzer)
 
 
 

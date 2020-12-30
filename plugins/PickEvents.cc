@@ -1,5 +1,5 @@
 #define PickEvents_cxx
-#include "JetMETStudies/JMEAnalyzer/interface/PickEvents.h"
+#include "PrefiringStudies/interface/PickEvents.h"
 #include <TH2.h>
 #include <TStyle.h>
 #include <TCanvas.h>

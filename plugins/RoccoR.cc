@@ -4,7 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
-#include "JetMETStudies/JMEAnalyzer/interface/RoccoR.h"
+#include "PrefiringStudies/interface/RoccoR.h"
 
 const double CrystalBall::pi = 3.14159;
 const double CrystalBall::sqrtPiOver2 = sqrt(CrystalBall::pi/2.0);

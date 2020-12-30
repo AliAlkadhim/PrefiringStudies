@@ -61,7 +61,7 @@ PickEvents::PickEvents(TTree *tree) : fChain(0), first(true)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-     TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("JetMETStudies/JMEAnalyzer/python/UnprefirableEventList_JetHT_Run2017BtoF.root");
+     TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("PrefiringStudies/python/UnprefirableEventList_JetHT_Run2017BtoF.root");
      //UnprefirableEventList_JetHT_Run2017BtoF.root
      //UnprefirableEventList_SingleElectron_Run2017BtoF.root 
      //TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("JetMETStudies/JMEAnalyzer/python/UnprefirableEventList_JetHT_Run2017BtoF.root");  
