@@ -184,6 +184,7 @@ class JMEAnalyzer : public edm::one::EDAnalyzer<edm::one::SharedResources,edm::o
 
   //Some histos to be saved for simple checks 
   TH1F *h_PFMet, *h_PuppiMet, *h_nvtx;
+  TH1F *DYJetMC_nocorrection;
 
   //These two histos are used to count the nb of events processed and the simulated PU distribution
   //They should be filled before any skim is applied 
@@ -408,7 +409,7 @@ class JMEAnalyzer : public edm::one::EDAnalyzer<edm::one::SharedResources,edm::o
 
   RoccoR rc; 
   JetCorrectionUncertainty *jecUnc; 
-  PickEvents pe;
+  //PickEvents pe;
 };
 
 //
@@ -487,6 +488,7 @@ JMEAnalyzer::JMEAnalyzer(const edm::ParameterSet& iConfig)
   h_PuppiMet  = fs->make<TH1F>("h_PuppiMet" , "PUPPI MET (GeV);PUPPI MET (GeV);Events"  ,    1000, 0., 5000.);
   h_Counter = fs->make<TH1D>("h_Counter", "Events counter", 5,0,5);
   h_trueNVtx = fs->make<TH1D>("h_trueNVtx", "Nb of generated vertices", 200,0,200);
+  DYJetMC_nocorrection = fs->make<TH1D>("DYJetMC_nocorrection", "DYJets_MC_noCorr_pt", 100,0,400);
 
   outputTree = fs->make<TTree>("tree","tree");
 
@@ -543,8 +545,8 @@ JMEAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
   _eventNb = iEvent.id().event();
 
   //PickEvents2 pe;
-  bool _ismatch = pe.match(_runNb, _eventNb);
-  if (! _ismatch) return;
+  //bool _ismatch = pe.match(_runNb, _eventNb);
+  //if (! _ismatch) return;
 
   _lumiBlock = iEvent.luminosityBlock();
   _bx=iEvent.bunchCrossing();
@@ -864,6 +866,8 @@ JMEAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
       _jetEta.push_back((&*jet)->eta());
       _jetPhi.push_back((&*jet)->phi());
       _jetPt.push_back((&*jet)->pt());
+      DYJetMC_nocorrection->Fill((&*jet)->pt())
+      
       _jet_CHEF.push_back((&*jet)->chargedHadronEnergyFraction());
       _jet_NHEF.push_back((&*jet)->neutralHadronEnergyFraction() );
       _jet_NEEF.push_back((&*jet)->neutralEmEnergyFraction() );
