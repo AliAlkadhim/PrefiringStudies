@@ -1,6 +1,7 @@
 directions:
 cmsrel ... cmsenv
 git cms-addpkg RecoMET/METFilters
+git clone PhysicsTools/PatUtils
 git clone https://github.com/lathomas/JetMETStudies.git 
 scram b -j4
 
