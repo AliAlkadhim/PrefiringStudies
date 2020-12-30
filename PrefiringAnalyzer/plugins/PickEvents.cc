@@ -1,5 +1,5 @@
 #define PickEvents_cxx
-#include "PrefiringStudies/interface/PickEvents.h"
+#include "PrefiringStudies/PrefiringAnalyzer/interface/PickEvents.h"
 #include <TH2.h>
 #include <TStyle.h>
 #include <TCanvas.h>
